@@ -19,8 +19,8 @@ import tensorflow as tf
 from sklearn.model_selection import cross_val_score
 
 # import data
-df_training = pd.read_csv("training_set_features.csv")
-df_labels = pd.read_csv("training_set_labels.csv")
+df_training = pd.read_csv("../Resources/training_set_features.csv")
+df_labels = pd.read_csv("../Resources/training_set_labels.csv")
 df = df_labels.merge(df_training, on = "respondent_id", how = "inner")
 
 # Clean feature and label dataset
@@ -57,5 +57,7 @@ model_optimal = RandomForestClassifier(n_estimators = 100, random_state=42)
 model_optimal.fit(X_train,y_train)
 
 #Save Model
-filename = 'randomForestML.sav'
+filename = '../models/randomForestML.sav'
 joblib.dump(model_optimal, filename)
+
+print("... Done ...")
