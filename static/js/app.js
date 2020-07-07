@@ -1,28 +1,35 @@
 
 d3.json('/query').then(data => {
 
-    // console.log('hi')
-    // console.log(data);
-
-        // Handling click for button1
+  
+        //selecting the 'Id_info" element from html to append 'ul'
         var ul = d3.select(".Id_info").append("ul");
+
+        // selecting the button1(click to know about me button)
         var button1 = d3.select(".button1")
 
+
+        // Handling click for button1
         button1.on("click", function() {  
-        ul.html("");
+
+            // emptying the page for every click
+            ul.html("");
 
 
             // finding a random number between 0 and 29 for every click
             number = Math.floor((Math.random() * 29) + 1);
+
+            // finding random number 0 or 1 for random pick of our paragraph
             random_pick = Math.round(Math.random());
 
-            console.log(`random number: ${random_pick}`);
-            console.log(`number: ${number}`);
+            console.log(`random number for paragraph: ${random_pick}`);
+            console.log(`number for id: ${number}`);
 
             // extracting data when number = id 
             info = data.filter( element => element.id == number)
             // console.log(info);
 
+            // extracting data from info to our variables
             res_id = info.map(row=> row.respondent_id);
             sex = info.map(row=> row.sex);
             age = info.map(row=> row.age_group);
@@ -35,58 +42,35 @@ d3.json('/query').then(data => {
             large_gathering = info.map(row=> row.behavioral_large_gatherings)
             truth = info.map(row=> row.h1n1_vaccine);
             prediction = info.map(row=> row.Prediction);
+      
+            // initializing the binary_cols dictionary to convert 0 and 1 to 'NO' and 'YES' respectively
+            binary_cols = {}
+
+            // assigning keys and values to binary_cols
+            binary_cols= {'wash_hands':wash_hands,'touch_face':touch_face,'wear_mask':wear_mask,'large_gathering':large_gathering,'truth':truth,'prediction':prediction}
+            
+            // converting 0 to 'NO' and 1 to 'YES'
+            Object.keys(binary_cols).forEach(function(key){
+                if (binary_cols[key] == 1) {
+                    binary_cols[key] = 'YES'
+                }
+                else {
+                    binary_cols[key] = 'NO'
+                }
+
+            })
+            // console.log(binary_cols);
 
 
-            if (wash_hands == 0){
-                wash_hands = 'NO'
-            }
-            else{
-                wash_hands = 'YES'
-            }
-
-            if (touch_face == 0){
-                touch_face = 'NO'
-            }
-            else{
-                touch_face = 'YES'
-            }
-
-            if (wear_mask == 0){
-                wear_mask = 'NO'
-            }
-            else{
-                wear_mask = 'YES'
-            }
-
-            if (large_gathering == 0){
-                large_gathering = 'NO'
-            }
-            else{
-                large_gathering = 'YES'
-            }
-
-            if (truth == 0){
-                truth = 'NO'
-            }
-            else{
-                truth = 'YES'
-            }
-
-            if (prediction == 0){
-                prediction = 'NO'
-            }
-            else{
-                prediction = 'YES'
-            }
-
+            // creating details1 and details2 dictionaries for our paragraphs
             details1 = {}
             details1['My Id '] = res_id[0]
             details1['I am a '] = sex[0]
             details1['My Age '] = age[0]
             details1['I am '] = marital_status[0]
             details1['My Income '] = income[0]
-            details1['Do I like to wash hands '] = wash_hands
-            details1['Do I like to touch face '] = touch_face
+            details1['Do I like to wash hands '] =binary_cols['wash_hands']
+            details1['Do I like to touch face '] = binary_cols['touch_face']
 
             details2 = {}
             details2['My Id '] = res_id[0]
@@ -94,22 +78,26 @@ d3.json('/query').then(data => {
             details2['My Age '] = age[0]
             details2['I am '] = marital_status[0]
             details2['My education '] = education[0]
-            details2['Do I like to wear face mask '] = wear_mask
-            details2['Do I like to large gathering '] = large_gathering
-            
+            details2['Do I like to wear face mask '] = binary_cols['wear_mask']
+            details2['Do I like to large gathering '] = binary_cols['large_gathering']
 
+
+
+            
         //    console.log(details1)
 
-            // Creating the list elements for the info
+            // Creating the list elements in html using details1 dictionary
             if (random_pick == 0) {
                 Object.entries(details1).forEach(([key,value]) =>{
-            var li = ul.append("li").text(`${key}:${value}`);
+                    var li = ul.append("li").text(`${key}:${value}`);
             
-            });
+            
+                });
             }
             else {
                 Object.entries(details2).forEach(([key,value]) =>{
                     var li = ul.append("li").text(`${key}:${value}`);
+                    
                 });
             }
             d3.selectAll("li").style("list-style", "none");
@@ -117,11 +105,13 @@ d3.json('/query').then(data => {
                 
         });
     
-
+        // handling the 'YES' and 'NO' buttons
         var button_grp = d3.selectAll(".btn-group")
         // console.log(button_grp);
         button_grp.on("click", function() {  
 
+            var truth = binary_cols['truth']
+            var prediction = binary_cols['prediction']
 
             var guess = d3.event.target.value
 
@@ -174,8 +164,6 @@ d3.json('/query').then(data => {
 
 
         });
-
-
-    
+ 
     
 });
