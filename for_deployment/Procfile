@@ -1,0 +1,1 @@
+web: gunicorn flu_vaccine.app:app
