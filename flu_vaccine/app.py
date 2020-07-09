@@ -37,7 +37,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-
+print('DATABASE_URL' : DATABASE_URL)
 
 @app.route("/")
 def index():
