@@ -18,7 +18,7 @@ app = Flask(__name__)
 # # Connects to the database using the app config
 # vaccine_db = SQLAlchemy(app)
 DATABASE_URL = os.environ['DATABASE_URL']
-engine = create_engine(DATABASE_URL/'vaccine_db')
+engine = create_engine(DATABASE_URL/vaccine_db)
 conn = engine.connect()
 # conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
