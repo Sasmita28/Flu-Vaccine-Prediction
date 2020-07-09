@@ -12,12 +12,17 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 
-# DATABASE_URL will contain the database connection string:
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
-# Connects to the database using the app config
-vaccine_db = SQLAlchemy(app)
+# # DATABASE_URL will contain the database connection string:
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# # Connects to the database using the app config
+# vaccine_db = SQLAlchemy(app)
+DATABASE_URL = os.environ['DATABASE_URL']
+engine = create_engine(DATABASE_URL/'vaccine_db')
+conn = engine.connect()
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
-from .models import Flu_Vaccine
+# from .models import Flu_Vaccine
 
 @app.route("/")
 def index():
@@ -28,10 +33,10 @@ def index():
 
 @app.route("/query")
 def query():
-    data = vaccine_db.session.query(flu_vaccine_prediction).all()
+    
     # engine = create_engine('postgresql://postgres:sasmita@localhost/vaccine_db')
     # conn = engine.connect()
-    # data = pd.read_sql("SELECT * FROM flu_vaccine_prediction", conn)
+    data = pd.read_sql("SELECT * FROM flu_vaccine_prediction", conn)
     json_data = data.to_json(orient ='records')
     return json_data
 

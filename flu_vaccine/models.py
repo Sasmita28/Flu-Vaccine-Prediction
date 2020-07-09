@@ -44,4 +44,4 @@ class Flu_Vaccine(vaccine_db.Model):
         
 
     def __repr__(self):
-        return '<FLu_Vaccine %r>' % (self.id)
+        return '<id {}>'.format(self.id)
