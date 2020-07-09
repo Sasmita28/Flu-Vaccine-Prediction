@@ -49,7 +49,7 @@ def index():
 @app.route("/query")
 def query():
 
-    results = db.session.query().all()
+    results = db.session.query(flu_vaccine_prediction).all()
     json_data = jsonify(results)
     return json_data
 
