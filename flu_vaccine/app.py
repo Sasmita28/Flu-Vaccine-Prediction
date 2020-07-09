@@ -52,14 +52,15 @@ def query():
 #     results = db.session.query(Base.metadata.tables['flu_vaccine_prediction']).all()
 #     results =  engine.execute("USE flu_vaccine_prediction")
 
-    results = db.session.query(flu_vaccine_prediction).all()
-    json_data = jsonify(results)
-    return json_data
+#     results = db.session.query(flu_vaccine_prediction).all()
+#     json_data = jsonify(results)
+#     return json_data
 
-    # trans.commit()
-    # Close connection
-    # conn.close()
-
+#    engine = create_engine('postgresql://postgres:sasmita@localhost/vaccine_db')
+        conn = engine.connect()
+        data = pd.read_sql("SELECT * FROM flu_vaccine_prediction", conn)
+        json_data = data.to_json(orient ='records')
+        return json_data
 
 if __name__ == "__main__":
     app.run(debug=True)
