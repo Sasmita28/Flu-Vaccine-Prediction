@@ -30,14 +30,14 @@ app = Flask(__name__)
 
 
 from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') 
-
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') 
+engine = create_engine('DATABASE_URL)
 # Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-print('DATABASE_URL' : DATABASE_URL)
+# print('DATABASE_URL' : DATABASE_URL)
 
 @app.route("/")
 def index():
@@ -49,7 +49,8 @@ def index():
 @app.route("/query")
 def query():
 
-    results = db.session.query(Base.metadata.tables['flu_vaccine_prediction']).all()
+#     results = db.session.query(Base.metadata.tables['flu_vaccine_prediction']).all()
+    results =  engine.execute("USE flu_vaccine_prediction")
     json_data = jsonify(results)
     return json_data
 
