@@ -17,19 +17,17 @@ from sqlalchemy import Column
 from sqlalchemy import Integer, String, Float
 
 # from config1 import password
-
-
-
 app = Flask(__name__)
 
-
 # DATABASE_URL will contain the database connection string:
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://uasjdajzsygssk:5ca12565ad331228d31a1594bcb08d0fc05df5838a583df924b9c1b66aa7bcc2@ec2-18-214-119-135.compute-1.amazonaws.com:5432/d3tagolmi6l9pb"
 
-engine = create_engine("postgres://uasjdajzsygssk:5ca12565ad331228d31a1594bcb08d0fc05df5838a583df924b9c1b66aa7bcc2@ec2-18-214-119-135.compute-1.amazonaws.com:5432/d3tagolmi6l9pb")
+db = SQLAlchemy(app)
+# engine = create_engine()
 
 
 # Create connection
-conn = engine.connect()
+# conn = engine.connect()
 # Begin transaction
 
 
