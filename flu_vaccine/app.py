@@ -17,7 +17,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
 # Connects to the database using the app config
 vaccine_db = SQLAlchemy(app)
 
-
+from .models import Flu_Vaccine
 
 @app.route("/")
 def index():
