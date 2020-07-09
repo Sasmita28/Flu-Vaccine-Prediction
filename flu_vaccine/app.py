@@ -50,7 +50,9 @@ def index():
 def query():
 
 #     results = db.session.query(Base.metadata.tables['flu_vaccine_prediction']).all()
-    results =  engine.execute("USE flu_vaccine_prediction")
+#     results =  engine.execute("USE flu_vaccine_prediction")
+
+    results = db.session.query().all()
     json_data = jsonify(results)
     return json_data
 
