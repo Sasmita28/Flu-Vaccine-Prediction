@@ -64,22 +64,22 @@ d3.json('/query').then(data => {
 
             // creating details1 and details2 dictionaries for our paragraphs
             details1 = {}
-            details1['My Id '] = res_id[0]
-            details1['I am a '] = sex[0]
-            details1['My Age '] = age[0]
-            details1['I am '] = marital_status[0]
-            details1['My Income '] = income[0]
-            details1['Do I like to wash hands '] =binary_cols['wash_hands']
-            details1['Do I like to touch face '] = binary_cols['touch_face']
+            details1['My Id'] = res_id[0]
+            details1['Sex'] = sex[0]
+            details1['My Age'] = age[0]
+            details1['Marital Status'] = marital_status[0]
+            details1['My Income'] = income[0]
+            details1['I wash my hands often'] =binary_cols['wash_hands']
+            details1['I touch my face often'] = binary_cols['touch_face']
 
             details2 = {}
-            details2['My Id '] = res_id[0]
-            details2['I am a '] = sex[0]
-            details2['My Age '] = age[0]
-            details2['I am '] = marital_status[0]
-            details2['My education '] = education[0]
-            details2['Do I like to wear face mask '] = binary_cols['wear_mask']
-            details2['Do I like to large gathering '] = binary_cols['large_gathering']
+            details2['My Id'] = res_id[0]
+            details2['Sex'] = sex[0]
+            details2['My Age'] = age[0]
+            details2['Marital Status'] = marital_status[0]
+            details2['My education'] = education[0]
+            details2['Do I regularly wear a face mask'] = binary_cols['wear_mask']
+            details2['Do I like large gatherings'] = binary_cols['large_gathering']
 
 
 
@@ -89,14 +89,14 @@ d3.json('/query').then(data => {
             // Creating the list elements in html using details1 dictionary
             if (random_pick == 0) {
                 Object.entries(details1).forEach(([key,value]) =>{
-                    var li = ul.append("li").text(`${key}:${value}`);
+                    var li = ul.append("li").text(`${key} : ${value}`);
             
             
                 });
             }
             else {
                 Object.entries(details2).forEach(([key,value]) =>{
-                    var li = ul.append("li").text(`${key}:${value}`);
+                    var li = ul.append("li").text(`${key} : ${value}`);
                     
                 });
             }
@@ -161,9 +161,41 @@ d3.json('/query').then(data => {
 
                 d3.select("#final_answer").html(results);
                 
+                
 
 
         });
  
     
 });
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("yesNobuttons");
+
+//Get the card
+var cardElement = document.getElementById("cardbody");
+
+//Get the button that clears the card
+var btn2 = document.getElementById("tryAgain");
+
+
+// When the user clicks on the yes.no buttons, open the results modal popup
+yesNobuttons.onclick = function() {
+  modal.style.display = "block";
+}
+
+//When the "Try Again" button is clicked, the popup disappears and the survey card clears
+tryAgain.onclick = function() {
+  modal.style.display = "none";
+  cardbody.style.display = "none";
+
+
+}
+
+//"click to learn about me" button displays next survey data after page load, after starting over on page.
+button1.onclick = function() {
+  cardbody.style.display = "block";
+}

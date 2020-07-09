@@ -1,65 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Flu Vaccine Prediction</title>
-  <style>
-    .button {
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-    .btn-group button {
-      background-color: #008CBA; /* Green background */
-      border: 1px solid white; /* Green border */
-      color: white; /* White text */
-      padding: 10px 24px; /* Some padding */
-      cursor: pointer; /* Pointer/hand icon */
-      float: left; /* Float the buttons side by side */
-    }
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
 
-    
-    .button {background-color: #008CBA;} /* Blue */
-    </style>
 </head>
 
 <body>
-
-  <h1>flu vaccine machine learning project</h1>
-
-  <button class="button button1">Click to Know about me</button>
-  <p>
-    <h4>My Info </h4>
-
-  <span class = 'Id_info'></span>
-
-  </p>
-
-  <h4>Did I get Flu Vaccine?</h4>
- <!-- Two buttons in a group -->
-
-<div class="btn-group"style="width:100%">
-  <button class="button_y" style="width:33.3%"value="YES">YES</button>
-  <button class="button_n" style="width:33.3%"value="NO">NO</button>
-
-</div>
-<br>
-<br>
-<br>
-<div id="final_answer"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="static/js/app.js"></script>
-
+  <div class= "container">
+    <div class= "row">
+      <div class="col-lg-12"id="banner">
+        <h1>Flu Vaccine Prediction</h1>
+      </div>  
+    </div> 
+    <div class = "row">
+      <div class="d-flex justify-content-center" id="learn">
+        <button class="btn btn-primary button1" id="button1">Click to learn about me</button>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="card text-white bg-primary mb3" id="card">
+        <div class="card-header" id="cardheader">Survey</div>
+        <div class="card-body" id="cardbody">
+          <span class="Id_info"></p>
+        </div>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="d-flex justify-content-center" id="question">
+        <div class="form-group">
+          <label for="id" id=>Did I get the Flu Vaccine? </label>
+          <br>
+          <div class="btn-group" id="yesNobuttons">
+            <button id="button_y" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" value="YES">Yes</button>
+            <button id="button_n" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" value="NO">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="modal-primary" id="myModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body" id="final_answer">
+              <p></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="tryAgain" data-dismiss="modal" >Try Again!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>  
+  <script src="static\js\app.js"></script>
 </body>
 
-</html>
+
+
+

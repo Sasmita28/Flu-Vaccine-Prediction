@@ -21,7 +21,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 # from config1 import password
 
-
+Base = declarative_base()
 
 app = Flask(__name__)
 
@@ -30,14 +30,14 @@ app = Flask(__name__)
 
 
 from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') 
-
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') 
+engine = create_engine('postgres://uasjdajzsygssk:5ca12565ad331228d31a1594bcb08d0fc05df5838a583df924b9c1b66aa7bcc2@ec2-18-214-119-135.compute-1.amazonaws.com:5432/d3tagolmi6l9pb')
 # Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-
+# print('DATABASE_URL' : DATABASE_URL)
 
 @app.route("/")
 def index():
@@ -49,14 +49,11 @@ def index():
 @app.route("/query")
 def query():
 
-    results = db.session.query().all()
-    json_data = jsonify(results)
+
+    conn = engine.connect()
+    data = pd.read_sql("SELECT * FROM flu_vaccine_prediction", conn)
+    json_data = data.to_json(orient ='records')
     return json_data
-
-    # trans.commit()
-    # Close connection
-    # conn.close()
-
 
 if __name__ == "__main__":
     app.run(debug=True)
