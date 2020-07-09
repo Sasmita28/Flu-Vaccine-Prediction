@@ -15,6 +15,9 @@ from sqlalchemy import MetaData
 from sqlalchemy import Table
 from sqlalchemy import Column
 from sqlalchemy import Integer, String, Float
+import select
+from sqlalchemy import inspect
+from sqlalchemy.ext.declarative import declarative_base
 
 # from config1 import password
 
@@ -25,13 +28,14 @@ app = Flask(__name__)
 
 # DATABASE_URL will contain the database connection string:
 
-engine = create_engine("postgres://doinivwtqywzqy:e1dd012f34fb6b9dd77449a82b9a52dbd6c0dd87b41921bf53ae80cd4f062350@ec2-34-206-31-217.compute-1.amazonaws.com:5432/d28e0pjlrkl4ui")
 
+from flask_sqlalchemy import SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') 
 
-# Create connection
-conn = engine.connect()
-# Begin transaction
+# Remove tracking modifications
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+db = SQLAlchemy(app)
 
 
 
@@ -44,18 +48,14 @@ def index():
 
 @app.route("/query")
 def query():
-    
-    # engine = create_engine('postgresql://postgres:sasmita@localhost/vaccine_db')
-    # conn = engine.connect()
-    trans = conn.begin()
-    data = conn.execute('SELECT * FROM '
-                        '"flu_vaccine_prediction"')
-    json_data = jsonify(data)
+
+    results = db.session.query().all()
+    json_data = jsonify(results)
     return json_data
 
-    trans.commit()
+    # trans.commit()
     # Close connection
-    conn.close()
+    # conn.close()
 
 
 if __name__ == "__main__":
