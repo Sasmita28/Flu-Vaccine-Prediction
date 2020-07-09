@@ -23,7 +23,7 @@ df = pd.read_csv('sample_prediction_set.csv')
 
 # DATABASE_URL will contain the database connection string:
 
-engine = create_engine("postgres://doinivwtqywzqy:e1dd012f34fb6b9dd77449a82b9a52dbd6c0dd87b41921bf53ae80cd4f062350@ec2-34-206-31-217.compute-1.amazonaws.com:5432/d28e0pjlrkl4ui")
+engine = create_engine("postgres://uasjdajzsygssk:5ca12565ad331228d31a1594bcb08d0fc05df5838a583df924b9c1b66aa7bcc2@ec2-18-214-119-135.compute-1.amazonaws.com:5432/d3tagolmi6l9pb")
 
 # Create a metadata instance
 metadata = MetaData(engine)
