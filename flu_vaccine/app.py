@@ -21,7 +21,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 # from config1 import password
 
-
+Base = declarative_base()
 
 app = Flask(__name__)
 
