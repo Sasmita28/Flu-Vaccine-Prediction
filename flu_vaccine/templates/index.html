@@ -11,7 +11,6 @@
 
 </head>
 
-
 <body>
   <div class= "container">
     <div class= "row">
@@ -21,11 +20,11 @@
     </div> 
     <div class = "row">
       <div class="d-flex justify-content-center" id="learn">
-        <button class="btn button1" id="button1">Click to learn about me</button>
+        <button class="btn btn-primary button1" id="button1">Click to learn about me</button>
       </div>
     </div>
     <div class = "row">
-      <div class="card text-white" id="card">
+      <div class="card text-white bg-primary mb3" id="card">
         <div class="card-header" id="cardheader">Survey</div>
         <div class="card-body" id="cardbody">
           <span class="Id_info"></p>
@@ -38,21 +37,21 @@
           <label for="id" id=>Did I get the Flu Vaccine? </label>
           <br>
           <div class="btn-group" id="yesNobuttons">
-            <button id="button_y" type="button" class="btn" data-toggle="modal" data-target="#myModal" value="YES">Yes</button>
-            <button id="button_n" type="button" class="btn" data-toggle="modal" data-target="#myModal" value="NO">No</button>
+            <button id="button_y" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" value="YES">Yes</button>
+            <button id="button_n" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" value="NO">No</button>
           </div>
         </div>
       </div>
     </div>
     <div class = "row">
-      <div class="modal" id="myModal">
+      <div class="modal-primary" id="myModal">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body" id="final_answer">
               <p></p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn" id="tryAgain" data-dismiss="modal" >Try Again!</button>
+              <button type="button" class="btn btn-primary" id="tryAgain" data-dismiss="modal" >Try Again!</button>
             </div>
           </div>
         </div>

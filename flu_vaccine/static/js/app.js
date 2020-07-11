@@ -9,7 +9,6 @@ d3.json('/query').then(data => {
     var button1 = d3.select(".button1")
 
 
-    
     // Handling click for button1
     button1.on("click", function() {  
 
@@ -190,14 +189,13 @@ modal.style.display = "block";
 
 //When the "Try Again" button is clicked, the popup disappears and the survey card clears
 tryAgain.onclick = function() {
-window.location.reload();
-
-
+modal.style.display = "none";
+cardbody.style.display = "none";
 
 
 }
 
-//"click to learn about me" button displays next survey; data after page load, after starting over on page.
+//"click to learn about me" button displays next survey data after page load, after starting over on page.
 button1.onclick = function() {
 cardbody.style.display = "block";
 }
