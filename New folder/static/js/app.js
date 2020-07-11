@@ -9,7 +9,6 @@ d3.json('/query').then(data => {
     var button1 = d3.select(".button1")
 
 
-    
     // Handling click for button1
     button1.on("click", function() {  
 
