@@ -189,13 +189,14 @@ modal.style.display = "block";
 
 //When the "Try Again" button is clicked, the popup disappears and the survey card clears
 tryAgain.onclick = function() {
-modal.style.display = "none";
-cardbody.style.display = "none";
+window.location.reload();
+
+
 
 
 }
 
-//"click to learn about me" button displays next survey data after page load, after starting over on page.
+//"click to learn about me" button displays next survey; data after page load, after starting over on page.
 button1.onclick = function() {
 cardbody.style.display = "block";
 }

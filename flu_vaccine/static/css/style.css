@@ -11,7 +11,10 @@
 #cardheader {
   font-size: x-large;
   text-align: center;
-  background-color: ;
+  background-color: rgb(3, 21, 122);
+  color: white;
+  
+  
 }
 
 #cardbody {
@@ -21,11 +24,13 @@
   padding-bottom: 10px;
   padding-top: 10px;
   height: max-content;
-  width: fit-content;
+  width: auto;
+  background-color: rgb(32, 66, 255);
+  color: white;
 }
 
 #banner {
-  background-color: #2073a3;
+  background-color: rgb(3, 21, 122);
   height: 32px;
   align-content: bottom;
   justify-content: baseline;
@@ -62,11 +67,14 @@ h1 {
 #learn {
   flex: auto;
   margin: 10px;
+  align-self: center;
 }
 
 #button1 {
   font-size: large;
   margin: auto;
+  background-color: rgb(3, 21, 122);
+  color: white;
 
 } 
 
@@ -76,6 +84,8 @@ h1 {
   height: 50px;
   font-size: large;
   border-radius: 10px;
+  background-color: rgb(3, 21, 122);
+  color: white;
 }
 
 #card {
@@ -101,13 +111,14 @@ h1 {
   flex: auto;
   font-size: large;
   border-radius: 10px;
+  text-align: center;
   
  
 }
 
 
 #final_answer {
-  background-color: #2073a3;
+  background-color: rgb(32, 66, 255);
   color: white;
   font-size: larger;
   margin-top: -5px;
@@ -120,12 +131,24 @@ h1 {
   font-size: large;
   border-radius: 10px;
   align-content: center;
+  background-color: rgb(3, 21, 122);
+  color: white;
 }
 
 
 
-#results {
-  background-color: rgb(211, 154, 32);
-  color: azure;
-  height: 60px;
-} 
+#tryAgain:hover {
+  background-color: rgb(16, 247, 16);
+  color: black;
+}
+
+#button1:hover {
+  background-color: #5faaff;
+  color: black;
+
+}
+
+.btn-group button:hover {
+  background-color: #1fa6ff;
+  color: black;
+}
