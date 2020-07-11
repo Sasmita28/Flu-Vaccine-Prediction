@@ -195,7 +195,6 @@ cardbody.style.display = "none";
 
 }
 
-
 //"click to learn about me" button displays next survey data after page load, after starting over on page.
 button1.onclick = function() {
 cardbody.style.display = "block";
