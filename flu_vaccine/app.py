@@ -31,7 +31,7 @@ app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') 
-engine = create_engine('postgres://uasjdajzsygssk:5ca12565ad331228d31a1594bcb08d0fc05df5838a583df924b9c1b66aa7bcc2@ec2-18-214-119-135.compute-1.amazonaws.com:5432/d3tagolmi6l9pb')
+engine = create_engine('postgres://smudpxfmokljmy:7f3da7db55ebfa4fd7e026f8e4ab6d98406914c9071522869954e1260363fc26@ec2-34-237-89-96.compute-1.amazonaws.com:5432/dcck9ut83mpkjl')
 # Remove tracking modifications
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
